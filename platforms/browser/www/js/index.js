@@ -35,6 +35,7 @@ var app = {
             
         }, 5000);
     },
+    
     getPosition() {
         var options = {
             enableHighAccuracy: true,
@@ -67,7 +68,7 @@ var app = {
                 console.log(request.responseText);
             }
         }
-        request.open("POST", "http://192.168.1.11:3412/locationUpdate", true);
+        request.open("POST", "https://35.180.199.240:3000/locationUpdate", true);
         request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         request.send('latitude=' + location.latitude + '&' +
                      'longitude=' + location.longitude + '&' +
