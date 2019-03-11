@@ -41,27 +41,18 @@ var app = {
             enableHighAccuracy: true,
             maximumAge: 3600000
         }
-
-        app.sendPosition({
-                latitude: 1,
-                longitude: 1,
-                accuracy: 1,
-                speed: 1,
-                timestamp: 1
-            });
-
-        // var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
-        // var sendPosition1 = app.sendPosition;
+        var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+        var sendPosition1 = app.sendPosition;
          
-        // function onSuccess(position) {
-        //     sendPosition1({
-        //         latitude: position.coords.latitude,
-        //         longitude: position.coords.longitude,
-        //         accuracy: position.coords.accuracy,
-        //         speed: position.coords.speed,
-        //         timestamp: position.timestamp
-        //     });
-        // };
+        function onSuccess(position) {
+            sendPosition1({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                accuracy: position.coords.accuracy,
+                speed: position.coords.speed,
+                timestamp: position.timestamp
+            });
+        };
 
         function onError(error) {
             console.error('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
