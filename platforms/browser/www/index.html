@@ -38,6 +38,18 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
+    (function() {
+        var xhr = {};
+        xhr.open = XMLHttpRequest.prototype.open;
+
+        XMLHttpRequest.prototype.open = function(method, url) {
+            console.log(url);
+            if(url.indexOf('/proxy/') == 0){
+                url = window.decodeURIComponent(url.substr(7));
+            }
+            xhr.open.apply(this, arguments);
+        };
+    })(window);
         app.initialize();
     </script>
 </body>

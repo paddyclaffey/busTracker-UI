@@ -41,18 +41,27 @@ var app = {
             enableHighAccuracy: true,
             maximumAge: 3600000
         }
-        var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
-        var sendPosition1 = app.sendPosition;
-         
-        function onSuccess(position) {
-            sendPosition1({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                accuracy: position.coords.accuracy,
-                speed: position.coords.speed,
-                timestamp: position.timestamp
+
+        app.sendPosition({
+                latitude: 1,
+                longitude: 1,
+                accuracy: 1,
+                speed: 1,
+                timestamp: 1
             });
-        };
+
+        // var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+        // var sendPosition1 = app.sendPosition;
+         
+        // function onSuccess(position) {
+        //     sendPosition1({
+        //         latitude: position.coords.latitude,
+        //         longitude: position.coords.longitude,
+        //         accuracy: position.coords.accuracy,
+        //         speed: position.coords.speed,
+        //         timestamp: position.timestamp
+        //     });
+        // };
 
         function onError(error) {
             console.error('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
@@ -68,7 +77,7 @@ var app = {
                 console.log(request.responseText);
             }
         }
-        request.open("POST", "http://35.180.199.240:3000/locationUpdate", true);
+        request.open("POST", "http://35.180.15.21:3000/locationUpdate", true);
         request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         request.send('latitude=' + location.latitude + '&' +
                      'longitude=' + location.longitude + '&' +
