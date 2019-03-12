@@ -68,7 +68,7 @@ var app = {
                 console.log(request.responseText);
             }
         }
-        request.open("POST", "http://35.180.15.21:3000/locationUpdate", true);
+        request.open("POST", "http://35.181.14.20:3000/locationUpdate", true);
         request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         request.send('latitude=' + location.latitude + '&' +
                      'longitude=' + location.longitude + '&' +
